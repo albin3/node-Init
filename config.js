@@ -2,12 +2,15 @@ var path = require('path');
 var root_dir = __dirname;
 
 var Config = function(env) {
+  this.__DIR = __dirname;
   this.APP_NAME = "PointsMall";
   this.LOG_DIR = "log";
   this.PORT = 3027;
   this.DEBUG = false;
   this.VIEWS_DIR = 'templates';
-  this.MODULE_DIR = 'mudules';      //app/modules/*
+  this.STATIC_URI = '/static';
+  this.STATIC_DIR = 'static';
+  this.MODULE_DIR = 'modules';      //app/modules/*
   this.NOSTATE = [  ];              //无状态服务-不需要Cookie Session支持
   this.MODULES = [ 'account' ];     //有状态服务
   this.REDISINFO = {

@@ -29,20 +29,22 @@ exports.init_app = function(config) {
   var logger = log4js.getLogger('default');
   app.use(log4js.connectLogger(logger, { level: 'auto' }));
 
+  // hang static files
+  app.use(config.STATIC_URI, express.static(path.join(config.__DIR, config.STATIC_DIR)));
+
   // hang req.body parser
   app.use(bodyParser.json()); //for parsing application/json
   app.use(bodyParser.urlencoded({ extended: true }));//for parsing application/x-www-form-urlencoded
-  // app.use(multer);//forparsing myltipart/form-data
 
   // hang swig
   app.engine('html', swig.renderFile);
   app.set('view engine', 'html');
-  app.set('views', path.join(__dirname, 'app', config.VIEWS_DIR));
+  app.set('views', path.join(config.__DIR, 'app', config.VIEWS_DIR));
 
   // hang NOSTATE
   var nostate = config.NOSTATE;
   for (var i=0; i<nostate.length; i++) {
-    require(path.join('app', app.MODULE_DIR, nostate[i])).init(app);
+    require(path.join(config.__DIR, 'app', app.MODULE_DIR, nostate[i])).init(app);
   }
 
   // hang cookieParser
@@ -51,8 +53,8 @@ exports.init_app = function(config) {
 
   // hang MUDULES
   var modules = config.MODULES;
-  for (var i=0; i<nostate.length; i++) {
-    require(path.join('app', app.MODULE_DIR, modules[i])).init(app);
+  for (var i=0; i<modules.length; i++) {
+    require(path.join(config.__DIR, "app",config.MODULE_DIR, modules[i])).init(app);
   }
 
   return app;
