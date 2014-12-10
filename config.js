@@ -3,7 +3,7 @@ var root_dir = __dirname;
 
 var Config = function(env) {
   this.__DIR = __dirname;
-  this.APP_NAME = "PointsMall";
+  this.APP_NAME = "NODE_INIT";
   this.LOG_DIR = "log";
   this.PORT = 3027;
   this.DEBUG = false;

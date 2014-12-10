@@ -44,12 +44,12 @@ exports.init_app = function(config) {
   // hang NOSTATE
   var nostate = config.NOSTATE;
   for (var i=0; i<nostate.length; i++) {
-    require(path.join(config.__DIR, 'app', app.MODULE_DIR, nostate[i])).init(app);
+    require(path.join(config.__DIR, 'app', config.MODULE_DIR, nostate[i])).init(app);
   }
 
   // hang cookieParser
   app.use(cookieParser());
-  app.use(get_redis_session("PointsMall")); // session;
+  app.use(get_redis_session(config.APP_NAME)); // session;
 
   // hang MUDULES
   var modules = config.MODULES;
