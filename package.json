@@ -1,8 +1,8 @@
 {
-  "name": "PointsMall",
+  "name": "NODE_INIT",
   "version": "0.0.0",
-  "description": "Skyworth PointsMall.",
-  "main": "pointsMall.js",
+  "description": "Node init.",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
@@ -24,10 +24,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "developer@louding.com:repo/SkyworthPointsMall/PointsMall.git"
+    "url": "developer@louding.com:repo/Node_init.git"
   },
   "keywords": [
-    "PointsMall"
+    "node framework"
   ],
   "author": "louding.com",
   "license": "MIT"
